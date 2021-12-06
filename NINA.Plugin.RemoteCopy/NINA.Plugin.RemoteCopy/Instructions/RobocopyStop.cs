@@ -23,8 +23,6 @@ namespace RemoteCopy.NINAPlugin.Instructions {
         public RobocopyStop() {
         }
 
-        // TODO: we should add a delay parameter so we wait and give it some time to finish
-
         public RobocopyStop(RobocopyStop cloneMe) : base(cloneMe) {
             CopyMetaData(cloneMe);
         }
@@ -60,22 +58,15 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
         private async Task<bool> WaitToStop(IProgress<ApplicationStatus> progress, CancellationToken token) {
 
-            var progressRouter = new Progress<double>((p) => {
-                progress.Report(new ApplicationStatus() {
-                    Status = "robocopy stop delay",
-                    Progress = p
-                });
-            });
-
             try {
-                await CoreUtil.Wait(TimeSpan.FromSeconds(RobocopyStopDelay), token, progress);
+                await CoreUtil.Wait(TimeSpan.FromSeconds(RobocopyStopDelay), token, progress, "Robocopy Stop delay");
             }
             catch (OperationCanceledException) {
-                Logger.Debug("operation canceled, will not stop robocopy");
+                Logger.Warning("operation canceled, will not stop robocopy");
                 throw;
             }
 
-            Logger.Debug("duration elapsed, stopping robocopy");
+            Logger.Info("duration elapsed, stopping robocopy");
             RobocopyProcessManager.Stop();
 
             return true;

@@ -33,8 +33,6 @@ namespace RemoteCopy.NINAPlugin.Instructions {
             CopyMetaData(cloneMe);
         }
 
-        // Note that Dew Heater instruction has a on/off switch, might be nice to add here as well
-
         private string robocopySrc = "";
 
         [JsonProperty]

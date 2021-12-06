@@ -18,7 +18,7 @@
             <nina:SequenceBlockView.SequenceItemContent>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center"
-                               Text="Wait before stop (seconds)" />
+                               Text="Wait before stop" />
                     <ninactrl:UnitTextBox MinWidth="40"
                                           Margin="5,0,0,0"
                                           VerticalContentAlignment="Center"
