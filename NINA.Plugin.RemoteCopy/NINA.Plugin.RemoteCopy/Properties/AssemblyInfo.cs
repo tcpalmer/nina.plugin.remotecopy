@@ -21,6 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyMetadata("License", "MPL-2.0")]
 [assembly: AssemblyMetadata("LicenseURL", "https://www.mozilla.org/en-US/MPL/2.0/")]
 [assembly: AssemblyMetadata("Repository", "https://github.com/tcpalmer/nina.plugin.remotecopy/")]
+[assembly: AssemblyMetadata("FeaturedImageURL", "https://raw.githubusercontent.com/tcpalmer/nina.plugin.remotecopy/main/NINA.Plugin.RemoteCopy/assets/remote-copy-logo.png?raw=true")]
 
 [assembly: AssemblyMetadata("LongDescription", @"Remote Copy supports replication of your image files to another location or server while your sequence is running.  This can be useful to automatically copy the images to the server used for postprocessing, to support live stacking, or for long term archiving.
 
