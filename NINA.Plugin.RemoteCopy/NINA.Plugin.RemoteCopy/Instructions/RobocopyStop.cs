@@ -13,7 +13,7 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
     [ExportMetadata("Name", "Robocopy Stop")]
     [ExportMetadata("Description", "Stops the robocopy background process")]
-    [ExportMetadata("Icon", "RobocopyStop.RobocopyStopSVG")] // TODO: SVG ...
+    [ExportMetadata("Icon", "RobocopyStop.RobocopyStopSVG")]
     [ExportMetadata("Category", "Remote Copy")]
     [Export(typeof(ISequenceItem))]
     [JsonObject(MemberSerialization.OptIn)]

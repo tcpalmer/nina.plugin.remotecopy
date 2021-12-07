@@ -16,7 +16,7 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
     [ExportMetadata("Name", "Robocopy Start")]
     [ExportMetadata("Description", "Starts the robocopy background process")]
-    [ExportMetadata("Icon", "RobocopyStart.RobocopyStartSVG")] // TODO: SVG ...
+    [ExportMetadata("Icon", "RobocopyStart.RobocopyStartSVG")]
     [ExportMetadata("Category", "Remote Copy")]
     [Export(typeof(ISequenceItem))]
     [JsonObject(MemberSerialization.OptIn)]
