@@ -9,7 +9,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="RobocopyOptions" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/njs /njh /s /xx /xo /mon:1 /r:2 /w:10</Value>
+      <Value Profile="(Default)">/njs /njh /e /xx /xo /mon:1 /r:2 /w:10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

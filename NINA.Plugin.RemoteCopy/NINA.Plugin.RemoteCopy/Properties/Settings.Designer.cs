@@ -49,7 +49,7 @@ namespace RemoteCopy.NINAPlugin.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/njs /njh /s /xx /xo /mon:1 /r:2 /w:10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/njs /njh /e /xx /xo /mon:1 /r:2 /w:10")]
         public string RobocopyOptions {
             get {
                 return ((string)(this["RobocopyOptions"]));
