@@ -34,7 +34,7 @@ namespace RemoteCopy.NINAPlugin.Instructions {
         }
 
         private int robocopyStopDelay = -1;
-        private readonly int DEFAULT_STOP_DELAY = 70;
+        private readonly int DEFAULT_STOP_DELAY = 120;
 
         [JsonProperty]
         public int RobocopyStopDelay {

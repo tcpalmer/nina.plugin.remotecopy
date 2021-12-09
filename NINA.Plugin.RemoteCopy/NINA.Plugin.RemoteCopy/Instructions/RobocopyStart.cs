@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json;
 using NINA.Core.Model;
 using NINA.Core.Utility;
 using NINA.Profile.Interfaces;
@@ -11,6 +12,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RemoteCopy.NINAPlugin.Instructions {
 
@@ -24,9 +26,14 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
         private readonly IProfileService profileService;
 
+        public ICommand SrcDialogCommand { get; private set; }
+        public ICommand DstDialogCommand { get; private set; }
+
         [ImportingConstructor]
         public RobocopyStart(IProfileService profileService) {
             this.profileService = profileService;
+            SrcDialogCommand = new RelayCommand(showSrcDialog);
+            DstDialogCommand = new RelayCommand(showDstDialog);
         }
 
         public RobocopyStart(RobocopyStart cloneMe) : this(cloneMe.profileService) {
@@ -139,6 +146,30 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
         public override string ToString() {
             return $"Category: {Category}, Item: {nameof(RobocopyStart)}, Src: {RobocopySrc}, Dst: {RobocopyDst}";
+        }
+
+        private void showSrcDialog(object obj) {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.Title = "Robocopy Source Folder";
+            dialog.IsFolderPicker = true;
+            dialog.InitialDirectory = RobocopySrc;
+
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok) {
+                RobocopySrc = dialog.FileName;
+            }
+        }
+
+        private void showDstDialog(object obj) {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.Title = "Robocopy Destination Folder";
+            dialog.IsFolderPicker = true;
+            dialog.InitialDirectory = RobocopyDst;
+
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok) {
+                RobocopyDst = dialog.FileName;
+            }
         }
     }
 }

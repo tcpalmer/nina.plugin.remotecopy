@@ -16,24 +16,52 @@
     <DataTemplate DataType="{x:Type local:RobocopyStart}">
         <nina:SequenceBlockView DataContext="{Binding}">
             <nina:SequenceBlockView.SequenceItemContent>
-                <StackPanel Orientation="Horizontal">
+                <WrapPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center"
-                               Text="Source Folder" />
-                    <TextBox MinWidth="200"
-                             MaxWidth="200"
+                               Text="Src" />
+                    <TextBox Width="240"
                              Margin="5,0,0,0"
-                             Text="{Binding RobocopySrc}" />
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             Text="{Binding RobocopySrc}"
+                             TextAlignment="Left" />
+                    <Button Width="20"
+                            Height="20"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Command="{Binding SrcDialogCommand}"
+                            Style="{StaticResource BackgroundButton}">
+                        <Path Margin="2,10,2,0"
+                              Data="{StaticResource DotsSVG}"
+                              Fill="{StaticResource ButtonForegroundBrush}"
+                              Stretch="Uniform" />
+                    </Button>
                     <TextBlock Margin="7.5,0,7.5,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Text="|" />
                     <TextBlock VerticalAlignment="Center"
-                               Text="Destination Folder" />
-                    <TextBox MinWidth="200"
-                             MaxWidth="200"
+                               Text="Dst" />
+                    <TextBox Width="240"
                              Margin="5,0,0,0"
-                             Text="{Binding RobocopyDst}" />
-                </StackPanel>
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             Text="{Binding RobocopyDst}"
+                             TextAlignment="Left" />
+                    <Button Width="20"
+                            Height="20"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Command="{Binding DstDialogCommand}"
+                            Style="{StaticResource BackgroundButton}">
+                        <Path Margin="2,10,2,0"
+                              Data="{StaticResource DotsSVG}"
+                              Fill="{StaticResource ButtonForegroundBrush}"
+                              Stretch="Uniform" />
+                    </Button>
+                </WrapPanel>
             </nina:SequenceBlockView.SequenceItemContent>
         </nina:SequenceBlockView>
     </DataTemplate>
