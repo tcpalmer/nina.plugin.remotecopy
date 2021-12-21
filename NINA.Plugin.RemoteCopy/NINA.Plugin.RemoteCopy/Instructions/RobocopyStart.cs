@@ -93,7 +93,12 @@ namespace RemoteCopy.NINAPlugin.Instructions {
                 Logger.Debug($"no automatic log added for robocopy");
             }
 
-            return $"\"{RobocopySrc}\" \"{RobocopyDst}\" {defaultOptions}{logging}";
+            // Trim any trailing backslashes from src and dst
+            char[] trim = { '\\' };
+            string src = RobocopySrc.TrimEnd(trim);
+            string dst = RobocopyDst.TrimEnd(trim);
+
+            return $"\"{src}\" \"{dst}\" {defaultOptions}{logging}";
         }
 
         private IList<string> issues = new List<string>();
