@@ -113,7 +113,7 @@ namespace RemoteCopy.NINAPlugin.Instructions {
                 i.Add("source folder required");
             }
             else if (!Directory.Exists(RobocopySrc)) {
-                i.Add("source folder does not exit");
+                i.Add("source folder does not exist");
             }
             else {
                 try {
@@ -128,7 +128,7 @@ namespace RemoteCopy.NINAPlugin.Instructions {
                 i.Add("destination folder required");
             }
             else if (!Directory.Exists(RobocopyDst)) {
-                i.Add("destination folder does not exit");
+                i.Add("destination folder does not exist");
             }
             else {
                 try {
