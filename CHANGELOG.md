@@ -1,5 +1,8 @@
 # Remote Copy
 
+## 2.0.2.0 - 2022-12-21
+* Migrated to .NET 7 for NINA 3
+
 ## 1.0.2.0 - 2002-XX-XX
 * Updated to latest NINA stable dependencies
 
