@@ -36,10 +36,34 @@ namespace RemoteCopy.NINAPlugin {
             }
         }
 
-        public string RobocopyOptions {
+        public string RobocopyOptions
+        {
             get => Settings.Default.RobocopyOptions;
-            set {
+            set
+            {
                 Settings.Default.RobocopyOptions = value;
+                Settings.Default.Save();
+                RaisePropertyChanged();
+            }
+        }
+
+        public string RobocopyDefaultSrc
+        {
+            get => Settings.Default.RobocopyDefaultSrc;
+            set
+            {
+                Settings.Default.RobocopyDefaultSrc = value;
+                Settings.Default.Save();
+                RaisePropertyChanged();
+            }
+        }
+
+        public string RobocopyDefaultDst
+        {
+            get => Settings.Default.RobocopyDefaultDst;
+            set
+            {
+                Settings.Default.RobocopyDefaultDst = value;
                 Settings.Default.Save();
                 RaisePropertyChanged();
             }

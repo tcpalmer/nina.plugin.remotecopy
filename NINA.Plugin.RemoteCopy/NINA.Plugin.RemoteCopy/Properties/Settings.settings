@@ -8,6 +8,9 @@
     <Setting Name="RobocopyShowWindowEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="RobocopyUseNINAFilePath" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
     <Setting Name="RobocopyOptions" Type="System.String" Scope="User">
       <Value Profile="(Default)">/njs /njh /e /xx /xo /mon:1 /r:2 /w:10</Value>
     </Setting>

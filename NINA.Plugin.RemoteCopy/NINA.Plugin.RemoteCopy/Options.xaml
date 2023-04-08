@@ -47,6 +47,32 @@
                                  MinWidth="200"
                                  Text="{Binding RobocopyOptions}" />
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,5">
+                        <TextBlock Width="150"
+                                   Text="Source folder"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right">
+                            <TextBlock.ToolTip>Source folder. Leave this empty if you want to to use the NINA Imaging file path.</TextBlock.ToolTip>
+                        </TextBlock>
+                        <TextBox Margin="5,0,0,0"
+                                 VerticalAlignment="Center"
+                                 MinWidth="500"
+                                 Text="{Binding RobocopyDefaultSrc}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,5">
+                        <TextBlock Width="150"
+                                   Text="Destination folder"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right">
+                            <TextBlock.ToolTip>Destination folder, this is required when using the Auto Robocopy function.</TextBlock.ToolTip>
+                        </TextBlock>
+                        <TextBox Margin="5,0,0,0"
+                                 VerticalAlignment="Center"
+                                 MinWidth="500"
+                                 Text="{Binding RobocopyDefaultDst}" />
+                    </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
