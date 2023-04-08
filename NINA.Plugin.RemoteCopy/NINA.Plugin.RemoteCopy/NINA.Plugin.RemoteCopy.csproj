@@ -277,6 +277,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Instructions\AutoRobocopy.cs" />
+    <Compile Include="Instructions\AutoRobocopyTemplate.xaml.cs">
+      <DependentUpon>AutoRobocopyTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Instructions\RobocopyStopTemplate.xaml.cs">
       <DependentUpon>RobocopyStopTemplate.xaml</DependentUpon>
     </Compile>
@@ -307,6 +311,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Instructions\AutoRobocopyTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Instructions\RobocopyStopTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

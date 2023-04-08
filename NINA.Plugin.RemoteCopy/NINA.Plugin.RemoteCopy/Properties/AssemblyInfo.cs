@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: Guid("F35D0A07-E238-436C-A4BD-BAA4AA2A6255")]
@@ -12,8 +12,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("1.0.2.0")]
-[assembly: AssemblyFileVersion("1.0.2.0")]
+[assembly: AssemblyVersion("1.0.3.0")]
+[assembly: AssemblyFileVersion("1.0.3.0")]
 
 // The minimum Version of N.I.N.A. that this plugin is compatible with
 [assembly: AssemblyMetadata("MinimumApplicationVersion", "2.0.0.9001")]
