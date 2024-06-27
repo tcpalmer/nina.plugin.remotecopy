@@ -1,10 +1,10 @@
 # Remote Copy
 
-## 3.0.0.0
+## 3.0.0.0 - 2024-06-27
 * Fully upgraded to NINA 3
 * Fixed problem with the stop delay and loading from a sequence template
 
-## 1.0.2.0 - 2002-XX-XX
+## 1.0.2.0 - 2021-12-21
 * Updated to latest NINA stable dependencies
 
 ## 1.0.1.0 - 2021-12-21
