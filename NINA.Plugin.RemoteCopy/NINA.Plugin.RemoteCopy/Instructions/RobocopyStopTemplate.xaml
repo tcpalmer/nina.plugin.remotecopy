@@ -5,7 +5,7 @@
                     xmlns:local="clr-namespace:RemoteCopy.NINAPlugin.Instructions"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:mini="clr-namespace:NINA.View.Sequencer.MiniSequencer;assembly=NINA.Sequencer"
-                    xmlns:ninactrl="clr-namespace:NINACustomControlLibrary;assembly=NINACustomControlLibrary"
+                    xmlns:ninactrl="clr-namespace:NINA.CustomControlLibrary;assembly=NINA.CustomControlLibrary"
                     xmlns:nina="clr-namespace:NINA.View.Sequencer;assembly=NINA.Sequencer"
                     mc:Ignorable="d">
 
