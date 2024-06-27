@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 
 [assembly: Guid("F35D0A07-E238-436C-A4BD-BAA4AA2A6255")]
-
 [assembly: AssemblyTitle("Remote Copy")]
 [assembly: AssemblyDescription("Copy acquired files to another location")]
 [assembly: AssemblyConfiguration("")]
@@ -11,18 +10,15 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-[assembly: AssemblyVersion("1.0.2.0")]
-[assembly: AssemblyFileVersion("1.0.2.0")]
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyFileVersion("3.0.0.0")]
 
 // The minimum Version of N.I.N.A. that this plugin is compatible with
-[assembly: AssemblyMetadata("MinimumApplicationVersion", "2.0.0.9001")]
-
+[assembly: AssemblyMetadata("MinimumApplicationVersion", "3.1.0.9001")]
 [assembly: AssemblyMetadata("License", "MPL-2.0")]
 [assembly: AssemblyMetadata("LicenseURL", "https://www.mozilla.org/en-US/MPL/2.0/")]
 [assembly: AssemblyMetadata("Repository", "https://github.com/tcpalmer/nina.plugin.remotecopy/")]
 [assembly: AssemblyMetadata("FeaturedImageURL", "https://raw.githubusercontent.com/tcpalmer/nina.plugin.remotecopy/main/NINA.Plugin.RemoteCopy/assets/remote-copy-logo.png?raw=true")]
-
 [assembly: AssemblyMetadata("LongDescription", @"Remote Copy supports replication of your image files to another location or server while your sequence is running.  This can be useful to automatically copy the images to the server used for postprocessing, to support live stacking, or for long term archiving.
 
 # Robocopy #
@@ -53,6 +49,8 @@ Support for SCP (secure copy) might be added if there's sufficient interest.  Th
 * Ask for help in the #plugin-discussions channel on the NINA project [Discord server](https://discord.com/invite/rWRbVbw).
 * [Source code](https://github.com/tcpalmer/nina.plugin.remotecopy)
 * [Change log](https://github.com/tcpalmer/nina.plugin.remotecopy/blob/main/CHANGELOG.md)
+
+If you like this plugin and it saves you time, please consider [Buying Me a Beer](https://www.buymeacoffee.com/tcpalmer).
 
 Remote Copy is provided 'as is' under the terms of the [Mozilla Public License 2.0](https://github.com/tcpalmer/nina.plugin.sessionmetadata/blob/main/LICENSE.txt)
 ")]

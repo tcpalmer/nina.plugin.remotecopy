@@ -33,14 +33,14 @@ namespace RemoteCopy.NINAPlugin.Instructions {
             };
         }
 
-        private int robocopyStopDelay = -1;
-        private readonly int DEFAULT_STOP_DELAY = 120;
+        private const int DEFAULT_STOP_DELAY = 120;
+        private int robocopyStopDelay = DEFAULT_STOP_DELAY;
 
         [JsonProperty]
         public int RobocopyStopDelay {
             get => robocopyStopDelay;
             set {
-                robocopyStopDelay = robocopyStopDelay == -1 ? DEFAULT_STOP_DELAY : value;
+                robocopyStopDelay = value;
                 RaisePropertyChanged();
             }
         }
@@ -57,11 +57,9 @@ namespace RemoteCopy.NINAPlugin.Instructions {
         }
 
         private async Task<bool> WaitToStop(IProgress<ApplicationStatus> progress, CancellationToken token) {
-
             try {
                 await CoreUtil.Wait(TimeSpan.FromSeconds(RobocopyStopDelay), token, progress, "Robocopy Stop delay");
-            }
-            catch (OperationCanceledException) {
+            } catch (OperationCanceledException) {
                 Logger.Warning("operation canceled, will not stop robocopy");
                 throw;
             }
