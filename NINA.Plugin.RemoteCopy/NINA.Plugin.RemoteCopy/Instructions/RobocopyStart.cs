@@ -23,7 +23,6 @@ namespace RemoteCopy.NINAPlugin.Instructions {
     [Export(typeof(ISequenceItem))]
     [JsonObject(MemberSerialization.OptIn)]
     public class RobocopyStart : SequenceItem, IValidatable {
-
         private readonly IProfileService profileService;
 
         public ICommand SrcDialogCommand { get; private set; }
@@ -41,23 +40,33 @@ namespace RemoteCopy.NINAPlugin.Instructions {
         }
 
         private string robocopySrc = "";
+        private bool robocopySrcExists = false;
 
         [JsonProperty]
         public string RobocopySrc {
             get => robocopySrc;
             set {
-                robocopySrc = String.IsNullOrEmpty(value) ? profileService?.ActiveProfile?.ImageFileSettings?.FilePath : value;
+                if (string.IsNullOrEmpty(value)) {
+                    robocopySrc = profileService?.ActiveProfile?.ImageFileSettings?.FilePath;
+                    robocopySrcExists = true;
+                } else {
+                    robocopySrc = value;
+                    AsyncDirectoryValidation(robocopySrc, (result) => { robocopySrcExists = result; });
+                }
+
                 RaisePropertyChanged();
             }
         }
 
         private string robocopyDst = "";
+        private bool robocopyDstExists = false;
 
         [JsonProperty]
         public string RobocopyDst {
             get => robocopyDst;
             set {
                 robocopyDst = value;
+                AsyncDirectoryValidation(robocopyDst, (result) => { robocopyDstExists = result; });
                 RaisePropertyChanged();
             }
         }
@@ -77,7 +86,6 @@ namespace RemoteCopy.NINAPlugin.Instructions {
         }
 
         private string GetOptions(bool showProcessWindow) {
-
             string defaultOptions = Properties.Settings.Default.RobocopyOptions;
             string logging = "";
 
@@ -88,8 +96,7 @@ namespace RemoteCopy.NINAPlugin.Instructions {
                 string logFilePath = Path.Combine(CoreUtil.APPLICATIONTEMPPATH, "Logs", logFileName);
                 logging = $" /log+:\"{logFilePath}\"";
                 Logger.Debug($"robocopy log: {logFilePath}");
-            }
-            else {
+            } else {
                 Logger.Debug($"no automatic log added for robocopy");
             }
 
@@ -111,30 +118,24 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
             if (String.IsNullOrEmpty(RobocopySrc)) {
                 i.Add("source folder required");
-            }
-            else if (!Directory.Exists(RobocopySrc)) {
+            } else if (!robocopySrcExists) {
                 i.Add("source folder does not exist");
-            }
-            else {
+            } else {
                 try {
                     srcPath = Path.GetFullPath(RobocopySrc);
-                }
-                catch {
+                } catch {
                     i.Add("source is not a valid path");
                 }
             }
 
             if (String.IsNullOrEmpty(RobocopyDst)) {
                 i.Add("destination folder required");
-            }
-            else if (!Directory.Exists(RobocopyDst)) {
+            } else if (!robocopyDstExists) {
                 i.Add("destination folder does not exist");
-            }
-            else {
+            } else {
                 try {
                     dstPath = Path.GetFullPath(RobocopyDst);
-                }
-                catch {
+                } catch {
                     i.Add("destination is not a valid path");
                 }
             }
@@ -147,6 +148,27 @@ namespace RemoteCopy.NINAPlugin.Instructions {
 
             Issues = i;
             return i.Count == 0;
+        }
+
+        private static object lockObj = new object();
+        private int asyncTaskCounter = 0;
+
+        private void AsyncDirectoryValidation(string path, Action<bool> setResult) {
+            if (string.IsNullOrEmpty(path)) {
+                setResult(false);
+                return;
+            }
+
+            // The async counter is used to prevent a late returning result from overwriting a newer one
+            lock (lockObj) { asyncTaskCounter++; }
+
+            Task.Run(() => {
+                int counter = asyncTaskCounter;
+                bool result = Directory.Exists(path);
+                if (counter == asyncTaskCounter) {
+                    setResult(result);
+                }
+            });
         }
 
         public override string ToString() {
